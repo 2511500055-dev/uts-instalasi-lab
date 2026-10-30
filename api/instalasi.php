@@ -124,6 +124,7 @@ switch ($method) {
         ], 200);
         break;
 
+        
     // case 'POST':   -> dikerjakan anggota 3
     // case 'PUT':    -> dikerjakan anggota 4
     // case 'DELETE': -> dikerjakan anggota 4
