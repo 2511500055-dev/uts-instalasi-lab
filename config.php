@@ -2,9 +2,13 @@
 // config.php
 // Koneksi database + header dasar untuk semua endpoint
 
+ini_set('display_errors', '0');   // jangan tampilkan warning/error PHP ke client
+ini_set('log_errors', '1');       // catat ke log server
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/helpers/response.php';
 
-// Kredensial default Laragon/XAMPP lokal
+// Kredensial default Laragon lokal
 $db_host = 'localhost';
 $db_user = 'root';
 $db_pass = '';
