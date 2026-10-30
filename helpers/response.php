@@ -17,7 +17,7 @@ function sendResponse($status, $message, $data = null, $code = 200)
 }
 
 // Untuk error SQL/server: detail masuk log, client hanya dapat pesan generik (pola P06)
-function sendServerError($detail = '')
+function serverError($detail = '')
 {
     error_log('[ERROR] ' . $detail);
     sendResponse(false, 'Terjadi kesalahan pada server', null, 500);
