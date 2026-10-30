@@ -1,4 +1,4 @@
-<h1>UTS/UAS Instalasi Lab</h1>
+#UTS/UAS Instalasi Lab
 
 <p>Widya Serena Mulyaputeri</p>
 <p>Monika Aldesia Plaron</p>
