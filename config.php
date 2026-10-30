@@ -1,32 +1,32 @@
 <?php
-// config.php
-// Koneksi database + header dasar untuk semua endpoint
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
-ini_set('display_errors', '0');   // jangan tampilkan warning/error PHP ke client
-ini_set('log_errors', '1');       // catat ke log server
-error_reporting(E_ALL);
-
-require_once __DIR__ . '/helpers/response.php';
-
-// Kredensial default Laragon lokal
-$db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
-$db_name = 'instalasi_lab';
-
-// Matikan exception bawaan mysqli supaya error tidak tampil mentah ke client
-mysqli_report(MYSQLI_REPORT_OFF);
-
-$koneksi = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-if (!$koneksi) {
-    // Detail error hanya masuk log, client dapat pesan generik (pola P06)
-    sendServerError('Koneksi database gagal: ' . mysqli_connect_error());
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+    http_response_code(204);
+    exit;
 }
 
-mysqli_set_charset($koneksi, 'utf8mb4');
+mysqli_report(MYSQLI_REPORT_OFF);
 
-// Header CORS dasar (supaya nanti bisa diakses dari aplikasi Android)
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type');
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "instalasi_lab";
+
+$koneksi = mysqli_connect($host, $user, $pass, $db);
+
+if (!$koneksi) {
+    error_log("Koneksi database gagal: " . mysqli_connect_error());
+    http_response_code(500);
+    echo json_encode([
+        "status"  => false,
+        "message" => "Terjadi kesalahan pada server",
+        "data"    => null
+    ]);
+    exit;
+}
+
+mysqli_set_charset($koneksi, "utf8mb4");

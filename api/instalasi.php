@@ -1,134 +1,141 @@
 <?php
-// api/detail_instalasi.php
-// GET: semua data, detail (?id=), pencarian (?search=), pagination (?page=&limit=)
-// Hasil JOIN menampilkan nama mahasiswa dan nama software, bukan id_mhs / id_sfw.
-
-require_once __DIR__ . '/../config.php';
+require_once "../config.php";
+require_once "../helpers/response.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-switch ($method) {
-
-    case 'GET':
-
-        // ---------- GET DETAIL: ?id= ----------
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-
-            // Hanya angka positif diterima, input seperti 1' OR 1=1 -- ditolak
-            if (!is_string($id) || !ctype_digit($id) || (int)$id <= 0) {
-                sendResponse(false, 'ID tidak valid', null, 400);
-            }
-            $id = (int)$id;
-
-            $sql = "SELECT d.kd, m.nim, m.nama AS nama_mahasiswa,
-                           s.kd_software, s.nama_software,
-                           d.created_at, d.status
-                    FROM detail_instalasi d
-                    JOIN mahasiswa m ON d.id_mhs = m.id
-                    JOIN software s ON d.id_sfw = s.id
-                    WHERE d.kd = ?";
-
-            $stmt = mysqli_prepare($koneksi, $sql);
-            if (!$stmt) {
-                sendServerError(mysqli_error($koneksi));
-            }
-            mysqli_stmt_bind_param($stmt, 'i', $id);
-            if (!mysqli_stmt_execute($stmt)) {
-                sendServerError(mysqli_stmt_error($stmt));
-            }
-
-            $result = mysqli_stmt_get_result($stmt);
-            $row = mysqli_fetch_assoc($result);
-            mysqli_stmt_close($stmt);
-
-            if (!$row) {
-                sendResponse(false, 'Data instalasi tidak ditemukan', null, 404);
-            }
-
-            sendResponse(true, 'Detail instalasi', $row, 200);
-        }
-
-        // ---------- GET LIST: search + pagination ----------
-        $search = (isset($_GET['search']) && is_string($_GET['search']))
-            ? trim($_GET['search']) : '';
-
-        $page  = isset($_GET['page'])  ? (int)$_GET['page']  : 1;
-        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
-
-        if ($page < 1)    $page = 1;
-        if ($limit < 1)   $limit = 10;
-        if ($limit > 100) $limit = 100;
-
-        $offset = ($page - 1) * $limit;
-
-        // Wildcard % ditempel di PHP, bukan di dalam query
-        $like = '%' . $search . '%';
-
-        // Hitung total data untuk info pagination
-        $sqlCount = "SELECT COUNT(*) AS total
-                     FROM detail_instalasi d
-                     JOIN mahasiswa m ON d.id_mhs = m.id
-                     JOIN software s ON d.id_sfw = s.id
-                     WHERE m.nama LIKE ?
-                        OR m.nim LIKE ?
-                        OR s.nama_software LIKE ?";
-
-        $stmt = mysqli_prepare($koneksi, $sqlCount);
-        if (!$stmt) {
-            sendServerError(mysqli_error($koneksi));
-        }
-        mysqli_stmt_bind_param($stmt, 'sss', $like, $like, $like);
-        if (!mysqli_stmt_execute($stmt)) {
-            sendServerError(mysqli_stmt_error($stmt));
-        }
-        $resCount = mysqli_stmt_get_result($stmt);
-        $total = (int)mysqli_fetch_assoc($resCount)['total'];
-        mysqli_stmt_close($stmt);
-
-        // Ambil data sesuai halaman
-        $sql = "SELECT d.kd, m.nim, m.nama AS nama_mahasiswa,
-                       s.kd_software, s.nama_software,
-                       d.created_at, d.status
+// Query dasar JOIN (menampilkan nama relasi, bukan id_mhs / id_sfw)
+$baseSelect = "SELECT 
+                    d.kd,
+                    m.nim,
+                    m.nama AS nama_mahasiswa,
+                    m.prodi,
+                    s.kd_software,
+                    s.nama_software,
+                    d.status,
+                    d.created_at
                 FROM detail_instalasi d
-                JOIN mahasiswa m ON d.id_mhs = m.id
-                JOIN software s ON d.id_sfw = s.id
-                WHERE m.nama LIKE ?
-                   OR m.nim LIKE ?
-                   OR s.nama_software LIKE ?
-                ORDER BY d.kd ASC
-                LIMIT ? OFFSET ?";
+                LEFT JOIN mahasiswa m ON d.id_mhs = m.id
+                LEFT JOIN software s ON d.id_sfw = s.id";
 
-        $stmt = mysqli_prepare($koneksi, $sql);
-        if (!$stmt) {
-            sendServerError(mysqli_error($koneksi));
-        }
-        mysqli_stmt_bind_param($stmt, 'sssii', $like, $like, $like, $limit, $offset);
-        if (!mysqli_stmt_execute($stmt)) {
-            sendServerError(mysqli_stmt_error($stmt));
+switch ($method) {
+    case 'GET':
+        //GET ID
+        if (isset($_GET['id'])) {
+            $id = (int) ($_GET['id'] ?? 0);
+
+            $stmt = mysqli_prepare($koneksi, $baseSelect . " WHERE d.kd = ?");
+            if (!$stmt) {
+                queryError($koneksi);
+            }
+
+            mysqli_stmt_bind_param($stmt, 'i', $id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if (!$result) {
+                queryError($koneksi);
+            }
+
+            $data = mysqli_fetch_assoc($result);
+
+            if (!$data) {
+                sendResponse(false, "Data instalasi tidak ditemukan", null, 404);
+            }
+
+            sendResponse(true, "Data berhasil diambil", $data, 200);
         }
 
-        $result = mysqli_stmt_get_result($stmt);
-        $items = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $items[] = $row;
-        }
-        mysqli_stmt_close($stmt);
+        //SEARCH
+        if (isset($_GET['search'])) {
 
-        sendResponse(true, 'Daftar instalasi', [
-            'items'       => $items,
-            'page'        => $page,
-            'limit'       => $limit,
-            'total'       => $total,
-            'total_pages' => (int)ceil($total / $limit)
-        ], 200);
+            $search = $_GET['search'] ?? "";
+            $term = "%" . $search . "%";
+
+            $stmt = mysqli_prepare($koneksi, $baseSelect . "
+                    WHERE m.nama LIKE ?
+                    OR m.nim LIKE ?
+                    OR s.nama_software LIKE ?
+                    ORDER BY d.kd DESC");
+            if (!$stmt) {
+                queryError($koneksi);
+            }
+
+            mysqli_stmt_bind_param($stmt, "sss", $term, $term, $term);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if (!$result) {
+                queryError($koneksi);
+            }
+
+            $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+            if (empty($data)) {
+                sendResponse(false, "Data instalasi tidak ditemukan", null, 404);
+            }
+
+            sendResponse(true, "Data berhasil diambil", $data, 200);
+        }
+
+        //Page/Limit
+        if (isset($_GET['page']) || isset($_GET['limit'])) {
+
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
+
+            if ($page < 1) {
+                $page = 1;
+            }
+
+            if ($limit < 1) {
+                $limit = 10;
+            }
+
+            if ($limit > 100) {
+                $limit = 100;
+            }
+
+            $offset = ($page - 1) * $limit;
+
+            $stmt = mysqli_prepare($koneksi, $baseSelect . "
+                    ORDER BY d.kd DESC
+                    LIMIT ? OFFSET ?");
+            if (!$stmt) {
+                queryError($koneksi);
+            }
+
+            mysqli_stmt_bind_param($stmt, "ii", $limit, $offset);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if (!$result) {
+                queryError($koneksi);
+            }
+
+            $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+            sendResponse(true, "Data berhasil diambil", $data, 200);
+        }
+
+        //GET ALL
+        $result = mysqli_query($koneksi, $baseSelect . " ORDER BY d.kd DESC");
+
+        if (!$result) {
+            queryError($koneksi);
+        }
+
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        sendResponse(true, "Data berhasil diambil", $data, 200);
+
         break;
 
-        
-    // case 'POST':   -> dikerjakan anggota 3
-    // case 'PUT':    -> dikerjakan anggota 4
-    // case 'DELETE': -> dikerjakan anggota 4
+    // case 'POST':   -> dikerjakan Anggota 3
+    // case 'PUT':    -> dikerjakan Anggota 4
+    // case 'DELETE': -> dikerjakan Anggota 4
 
     default:
-        sendResponse(false, 'Metode tidak diizinkan', null, 405);
+        sendResponse(false, "Metode tidak diizinkan", null, 405);
+        break;
 }
