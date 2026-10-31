@@ -98,8 +98,62 @@ switch ($method) {
         break;
 
     // case 'POST':   -> dikerjakan Anggota 3
-    // case 'PUT':    -> dikerjakan Anggota 4
-    // case 'DELETE': -> dikerjakan Anggota 4
+     case 'PUT':
+
+        $input = json_decode(file_get_contents("php://input"), true);
+        #cek apakah nim, nama, dan id_jurusan ada di dalam body yang dikirim
+        if (!$input || !isset($input['id_mhs']) || !isset($input['id_sfw']) || !isset($input['status'])) {
+            sendResponse(false, "Data tidak lengkap", null, 400);
+        }
+
+        $kd = $_GET['kd'];
+
+        $nama = $input['id_mhs'];
+        $software = $input['id_sfw'];
+        $status = $input['status'];
+
+        #Cek Id Mahasiswa
+        $cek_mahasiswa = mysqli_query($koneksi, "SELECT id FROM mahasiswa WHERE id = '$kd' ");
+        if (mysqli_num_rows($cek_mahasiswa) == 0) {
+            sendResponse(false, "Mahasiswa tidak ditemukan", null, 404);
+        }
+
+        #Cek apakah jurusan exist
+        $cek_software = mysqli_query($koneksi, "SELECT id  FROM software WHERE id = '$software' ");
+        if (mysqli_num_rows($cek_software) == 0) {
+            sendResponse(false, "Software tidak ditemukan", null, 404);
+        }
+
+        #Cek penggunaan NIM
+        
+        #Update
+        $query = "UPDATE detail_instalasi SET id_mhs = '$nama', id_sfw = '$software', `status` = '$status' WHERE kd = '$kd'";
+
+        if (mysqli_query($koneksi, $query)) {
+            sendResponse(true, "Data Berhasil Diperbarui", ["kd" => $kd], 200);
+        } else {
+            sendResponse(false, mysqli_error($koneksi), null, 500);
+        }
+
+        break;
+
+
+    case 'DELETE':
+
+        $kd = $_GET['kd'];
+
+        $cek_detail = mysqli_query($koneksi, "SELECT kd FROM detail_instalasi WHERE kd = '$kd' ");
+        if (mysqli_num_rows($cek_detail) == 0)
+            sendResponse(false, "Detail Instalasi tidak ditemukan", null, 404);
+
+        $query = "DELETE FROM detail_instalasi WHERE kd = '$kd'";
+
+        if (mysqli_query($koneksi, $query)) {
+            sendResponse(true, "Data Berhasil Dihapus", ["kd" => $kd], 200);
+        } else {
+            sendResponse(false, mysqli_error($koneksi), null, 500);
+        }
+        break;
 
     default:
         sendResponse(false, "Metode tidak diizinkan", null, 405);
