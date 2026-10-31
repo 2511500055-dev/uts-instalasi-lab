@@ -21,9 +21,14 @@ function queryError($koneksi)
     sendResponse(false, "Terjadi kesalahan pada server", null, 500);
 }
 
+ anggota2-config-get
 // Untuk error dari prepared statement atau koneksi: kirim detailnya sebagai teks.
 // Detail hanya masuk log (pola P06), client tetap dapat pesan generik.
 function sendServerError($detail = '')
+
+// Untuk error SQL/server: detail masuk log, client hanya dapat pesan generik (pola P06)
+function serverError($detail = '')
+ main
 {
     error_log("[ERROR] " . $detail);
     sendResponse(false, "Terjadi kesalahan pada server", null, 500);
