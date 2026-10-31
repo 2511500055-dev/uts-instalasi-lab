@@ -181,30 +181,20 @@ switch ($method) {
 
         $input = json_decode(file_get_contents("php://input"), true);
 
-        if (!$input || !isset($input['nm_mahasiswa']) || !isset($input['nim']) || !isset($input['id_jurusan'])) {
+        if (!$input || !isset($input['id_mhs']) || !isset($input['id_sfw']) || !isset($input['status'])) {
             sendResponse(false, "Data tidak lengkap", null, 400);
         }
 
-        $nm_mahasiswa = $input['nm_mahasiswa'];
-        $nim = $input['nim'];
-        $id_jurusan = (int)$input['id_jurusan'];
+        $nama = (int) $input['id_mhs'];
+        $software = (int) $input['id_sfw'];
+        $status = $input['status'];
 
 
-        $check = mysqli_query($koneksi, "SELECT id FROM jurusan WHERE id= '$id_jurusan'");
-        if (mysqli_num_rows($check) == 0) {
-            sendResponse(false, "id_jurusan tidak ditemukan", null, 404);
-        }
-
-        $check_nim = mysqli_query($koneksi, "SELECT id FROM mahasiswa WHERE nim = '$nim'");
-        if (mysqli_num_rows($check_nim) > 0) {
-            sendResponse(false, "NIM sudah digunakan", null, 409);
-        }
-
-        $stmt = mysqli_prepare($koneksi, "INSERT INTO mahasiswa (nm_mahasiswa, nim, id_jurusan, created_at) VALUES (?,?,?, NOW())");
-        mysqli_stmt_bind_param($stmt, "ssi", $nm_mahasiswa, $nim, $id_jurusan);
+        $stmt = mysqli_prepare($koneksi, "INSERT INTO instalasi (id_mhs, id_sfw, created_at, status) VALUES (?,?, NOW(),?)");
+        mysqli_stmt_bind_param($stmt, "iis", $nama, $software, $status);
 
         if (mysqli_stmt_execute($stmt)) {
-            sendResponse(true, "Data telah berhasil tersimpan", ["id" => mysqli_insert_id($koneksi)], 201);
+            sendResponse(true, "Data telah berhasil tersimpan", ["kd" => mysqli_insert_id($koneksi)], 201);
         } else {
             sendResponse(false, "Gagal menyimpan data: " . mysqli_error($koneksi), null, 500);
         }
@@ -223,8 +213,8 @@ switch ($method) {
 
         $id = $_GET['id'];
 
-        $nama = $input['id_mhs'];
-        $software = $input['id_sfw'];
+        $nama = (int) $input['id_mhs'];
+        $software = (int) $input['id_sfw'];
         $status = $input['status'];
 
         #Cek Id Mahasiswa
