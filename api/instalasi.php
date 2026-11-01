@@ -4,40 +4,39 @@ require_once "../helpers/response.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-
 switch ($method) {
     case 'GET':
-        echo "ini adalah metode GET";
+        //echo "ini adalah metode GET";
 
         // GET ID
-        if (isset($_GET['id'])) {
+        if (isset($_GET['no_instalasi'])) {
 
-            $id = (int) ($_GET['id'] ?? 0);
+            $no_instalasi = (int) ($_GET['no_instalasi'] ?? 0);
 
             $stmt = mysqli_prepare(
                 $koneksi,
                 "SELECT
-        d.kd,
-        d.id_mhs,
-        m.nama AS nama_mahasiswa,
-        d.id_sfw,
+        f.no_instalasi,
+        f.id_mahasiswa,
+        m.nama_mahasiswa AS nama_mahasiswa,
+        f.id_software,
         s.nama_software AS nama_software,
-        d.created_at,
-        d.status
+        f.created_at,
+        f.status
 
-    FROM detail_instalasi d
+    FROM form_instalasi f
 
     LEFT JOIN mahasiswa m
-        ON d.id_mhs = m.id
+        ON f.id_mahasiswa = m.id_mahasiswa
 
     LEFT JOIN software s
-        ON d.id_sfw = s.id
+        ON f.id_software = s.id_software
 
-    WHERE d.kd = ?"
+    WHERE f.no_instalasi = ?"
 
             );
 
-            mysqli_stmt_bind_param($stmt, 'i', $id);
+            mysqli_stmt_bind_param($stmt, 'i', $no_instalasi);
 
             mysqli_stmt_execute($stmt);
 
@@ -70,26 +69,26 @@ switch ($method) {
             $stmt = mysqli_prepare(
                 $koneksi,
                 "SELECT
-                    d.kd,
-                    d.id_mhs,
-                    m.nama AS nama_mahasiswa,
-                    d.id_sfw,
+                    f.no_instalasi,
+                    f.id_mahasiswa,
+                    m.nama_mahasiswa AS nama_mahasiswa,
+                    f.id_software,
                     s.nama_software AS nama_software,
-                    d.created_at,
-                    d.status
+                    f.created_at,
+                    f.status
 
-                FROM detail_instalasi d
+                FROM form_instalasi f
 
                 LEFT JOIN mahasiswa m
-                     ON d.id_mhs = m.id
+                     ON f.id_mahasiswa = m.id_mahasiswa
 
                 LEFT JOIN software s
-                    ON d.id_sfw = s.id 
+                    ON f.id_software = s.id_software
 
-                    WHERE m.nama LIKE ?
+                    WHERE m.nama_mahasiswa LIKE ?
                     OR s.nama_software LIKE ?
-                    OR d.status LIKE ?
-                    ORDER BY d.kd DESC"
+                    OR f.status LIKE ?
+                    ORDER BY f.no_instalasi DESC"
             );
 
             mysqli_stmt_bind_param($stmt, "sss", $term, $term, $term);
@@ -103,7 +102,7 @@ switch ($method) {
             $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
             if (empty($data)) {
-                sendResponse(false, "Data Mahasiswa tidak ditemukan", null, 404);
+                sendResponse(false, "Data Instalasi tidak ditemukan", null, 404);
             }
 
             sendResponse(true, "Data berhasil diambil", $data, 200);
@@ -132,22 +131,22 @@ switch ($method) {
             $offset = ($page - 1) * $limit;
 
             $query = "SELECT
-                    d.kd,
-                    d.id_mhs,
-                    m.nama AS nama_mahasiswa,
-                    d.id_sfw,
+                    f.no_instalasi,
+                    f.id_mahasiswa,
+                    m.nama_mahasiswa AS nama_mahasiswa,
+                    f.id_software,
                     s.nama_software AS nama_software,
-                    d.created_at,
-                    d.status
+                    f.created_at,
+                    f.status
 
-                FROM detail_instalasi d
+                FROM form_instalasi f
 
                 LEFT JOIN mahasiswa m
-                     ON d.id_mhs = m.id
+                     ON f.id_mahasiswa = m.id_mahasiswa
 
                 LEFT JOIN software s
-                    ON d.id_sfw = s.id 
-                    ORDER BY d.kd DESC
+                    ON f.id_software = s.id_software
+                    ORDER BY f.no_instalasi DESC
                     LIMIT $limit OFFSET $offset";
 
             $result = mysqli_query($koneksi, $query);
@@ -181,20 +180,20 @@ switch ($method) {
 
         $input = json_decode(file_get_contents("php://input"), true);
 
-        if (!$input || !isset($input['id_mhs']) || !isset($input['id_sfw']) || !isset($input['status'])) {
+        if (!$input || !isset($input['id_mahasiswa']) || !isset($input['id_software']) || !isset($input['status'])) {
             sendResponse(false, "Data tidak lengkap", null, 400);
         }
 
-        $nama = (int) $input['id_mhs'];
-        $software = (int) $input['id_sfw'];
+        $id_mahasiswa = (int) $input['id_mahasiswa'];
+        $id_software = (int) $input['id_software'];
         $status = $input['status'];
 
 
-        $stmt = mysqli_prepare($koneksi, "INSERT INTO instalasi (id_mhs, id_sfw, created_at, status) VALUES (?,?, NOW(),?)");
-        mysqli_stmt_bind_param($stmt, "iis", $nama, $software, $status);
+        $stmt = mysqli_prepare($koneksi, "INSERT INTO form_instalasi (id_mahasiswa, id_software, created_at, status) VALUES (?,?, NOW(),?)");
+        mysqli_stmt_bind_param($stmt, "iis", $id_mahasiswa, $id_software, $status);
 
         if (mysqli_stmt_execute($stmt)) {
-            sendResponse(true, "Data telah berhasil tersimpan", ["kd" => mysqli_insert_id($koneksi)], 201);
+            sendResponse(true, "Data telah berhasil tersimpan", ["no_instalasi" => mysqli_insert_id($koneksi)], 201);
         } else {
             sendResponse(false, "Gagal menyimpan data: " . mysqli_error($koneksi), null, 500);
         }
@@ -207,24 +206,24 @@ switch ($method) {
 
         $input = json_decode(file_get_contents("php://input"), true);
         #cek apakah nim, nama, dan id_jurusan ada di dalam body yang dikirim
-        if (!$input || !isset($input['id_mhs']) || !isset($input['id_sfw']) || !isset($input['status'])) {
+        if (!$input || !isset($input['id_mahasiswa']) || !isset($input['id_software']) || !isset($input['status'])) {
             sendResponse(false, "Data tidak lengkap", null, 400);
         }
 
-        $id = $_GET['id'];
+        $no_instalasi = $_GET['no_instalasi'];
 
-        $nama = (int) $input['id_mhs'];
-        $software = (int) $input['id_sfw'];
+        $id_mahasiswa = (int) $input['id_mahasiswa'];
+        $id_software = (int) $input['id_software'];
         $status = $input['status'];
 
         #Cek Id Mahasiswa
-        $cek_mahasiswa = mysqli_query($koneksi, "SELECT id FROM mahasiswa WHERE id = '$id' ");
+        $cek_mahasiswa = mysqli_query($koneksi, "SELECT id_mahasiswa FROM mahasiswa WHERE id_mahasiswa = '$id_mahasiswa' ");
         if (mysqli_num_rows($cek_mahasiswa) == 0) {
             sendResponse(false, "Mahasiswa tidak ditemukan", null, 404);
         }
 
         #Cek apakah jurusan exist
-        $cek_software = mysqli_query($koneksi, "SELECT id  FROM software WHERE id = '$software' ");
+        $cek_software = mysqli_query($koneksi, "SELECT id_software FROM software WHERE id_software = '$id_software' ");
         if (mysqli_num_rows($cek_software) == 0) {
             sendResponse(false, "Software tidak ditemukan", null, 404);
         }
@@ -232,10 +231,10 @@ switch ($method) {
         #Cek penggunaan NIM
 
         #Update
-        $query = "UPDATE detail_instalasi SET id_mhs = '$nama', id_sfw = '$software', `status` = '$status' WHERE kd = '$id'";
+        $query = "UPDATE form_instalasi SET id_mahasiswa = '$id_mahasiswa', id_software = '$id_software', `status` = '$status' WHERE no_instalasi = '$no_instalasi'";
 
         if (mysqli_query($koneksi, $query)) {
-            sendResponse(true, "Data Berhasil Diperbarui", ["id" => $id], 200);
+            sendResponse(true, "Data Berhasil Diperbarui", ["no_instalasi" => $no_instalasi], 200);
         } else {
             sendResponse(false, mysqli_error($koneksi), null, 500);
         }
@@ -245,16 +244,16 @@ switch ($method) {
 
     case 'DELETE':
 
-        $id = $_GET['id'];
+        $no_instalasi = $_GET['no_instalasi'];
 
-        $cek_detail = mysqli_query($koneksi, "SELECT kd FROM detail_instalasi WHERE kd = '$id' ");
-        if (mysqli_num_rows($cek_detail) == 0)
-            sendResponse(false, "Detail Instalasi tidak ditemukan", null, 404);
+        $cek_form = mysqli_query($koneksi, "SELECT no_instalasi FROM form_instalasi WHERE no_instalasi = '$no_instalasi' ");
+        if (mysqli_num_rows($cek_form) == 0)
+            sendResponse(false, "Form Instalasi tidak ditemukan", null, 404);
 
-        $query = "DELETE FROM detail_instalasi WHERE kd = '$id'";
+        $query = "DELETE FROM form_instalasi WHERE no_instalasi = '$no_instalasi'";
 
         if (mysqli_query($koneksi, $query)) {
-            sendResponse(true, "Data Berhasil Dihapus", ["kd" => $id], 200);
+            sendResponse(true, "Data Berhasil Dihapus", ["no_instalasi" => $no_instalasi], 200);
         } else {
             sendResponse(false, mysqli_error($koneksi), null, 500);
         }
