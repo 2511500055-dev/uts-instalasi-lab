@@ -48,6 +48,31 @@ switch ($method) {
             sendResponse(true, "Data berhasil diambil", $data, 200);
         }
 
+        case 'POST':
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (!$input || !isset($input['kd_software']) || !isset($input['nama_software'])) {
+            sendResponse(false, "Data tidak lengkap", null, 400);
+        }
+
+        $kd_software = (string) $input['kd_software'];
+        $nama = (string) $input['nama_software'];
+
+ 
+        $stmt = mysqli_prepare($koneksi, "INSERT INTO software (kd_software, nama_software) VALUES (?,?)");
+        mysqli_stmt_bind_param($stmt, "ss", $kd_software, $nama);
+
+        if (mysqli_stmt_execute($stmt)) {
+            sendResponse(true, "Data telah berhasil tersimpan", ["id_software" => mysqli_insert_id($koneksi)], 201);
+        } else 
+        {
+            sendResponse(false, "Gagal menyimpan data: " . mysqli_error($koneksi), null, 500);
+        }
+
+        echo "ini adalah metode POST";
+        break;
+
         //SEARCH
         if (isset($_GET['search'])) {
 
