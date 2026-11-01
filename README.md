@@ -7,4 +7,4 @@
 <p>Aditya Isani Wijaya [2511500055]</p>
 
 ### ERD
-<img src="database/erd_uts.png" alt="ERD" width="200">
+<img src="database/erd_uts.png" alt="ERD" width="500">
