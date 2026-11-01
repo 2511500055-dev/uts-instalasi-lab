@@ -232,3 +232,42 @@ Tugas:<br>
         </tr>
     </tbody>
 </table>
+
+
+### Cara Menjalankan
+
+
+<p>1. Import Schema Database</p>
+<ol>
+    <li>Buka Laragon, kemudian klik Start All</li>
+    <li>Buka browser dan akses http://localhost/phpmyadmin</li>
+    <li>Pilih database yang akan digunakan atau buat database baru</li>
+    <li>Pilih menu Import</li>
+    <li>Klik Choose File, lalu pilih file database (file yang berekstensi .sql)</li>
+    <li>Klik tombol Import</li>
+    <li>Periksa apakah tabel mahasiswa, software, dan form_instalasi berhasil diimpor</li>
+</ol>
+
+<p>2. Menjalankan Project Menggunakan Laragon</p>
+<ol>
+    <li>Buka aplikasi Laragon</li>
+    <li>Klik Start All untuk menjalankan Apache dan MySQL</li>
+    <li>Pastikan folder project berada di dalam direktori C:\laragon\www (C: bisa sesuai dengan lokasi laragon masing-masing)</li>
+    <li>Pastikan konfigurasi database pada file config.php sudah sesuai dengan database di PhpMyAdmin</li>
+    <li>
+        Buka browser dan akses alamat project: http://localhost/pdcs-uts/uts-instalasi-lab
+    </li>
+</ol>
+
+<p>3. Pengujian API Menggunakan Thunder Client</p>
+<ol>
+    <li>Buka Visual Studio Code</li>
+    <li>Klik ikon Thunder Client pada sidebar (instal dari menu Extension jika belum terinstal)</li>
+    <li>Pilih New Request</li>
+    <li>Pilih metode HTTP sesuai endpoint yang akan diuji (GET, POST, PUT, atau DELETE)</li>
+    <li>Masukkan URL endpoint yang ingin diuji (contohnya dapat dilihat pada tabel daftar endpoint)</li>
+    <li>Untuk metode POST dan PUT, pilih Body dan pilih JSON</li>
+    <li>Masukkan data JSON sesuai kebutuhan(contohnya dapat dilihat pada tabel daftar endpoint)</li>
+    <li>Klik Send untuk mengirim request</li>
+    <li>Periksa hasil pengujian pada bagian Response</li>
+</ol>
