@@ -3,25 +3,25 @@
 ### Tema: Instalasi Lab
 
 ### Kelompok 505http
-<p>Jeffrey Deryata [2511500007]</p><br>
-<p>Tugas:</p><br>
+<p>Jeffrey Deryata [2511500007]</p>
+Tugas:
 Nananana
-<br><br>
+<br>
 
-<p>Widya Serena Mulyaputeri [2511500020]</p><br>
-<p>Tugas:</p><br>
+<p>Widya Serena Mulyaputeri [2511500020]</p>
+Tugas:
 Nananana
-<br><br>
+<br>
 
-<p>Monika Aldesia Plaron [2511500030]</p><br>
-<p>Tugas:</p><br>
+<p>Monika Aldesia Plaron [2511500030]</p>
+Tugas:
 Nananana
-<br><br>
+<br>
 
-<p>Aditya Isani Wijaya [2511500055]</p><br>
-<p>Tugas:</p><br>
+<p>Aditya Isani Wijaya [2511500055]</p>
+Tugas:
 Nananana
-<br><br>
+<br>
 
 
 
