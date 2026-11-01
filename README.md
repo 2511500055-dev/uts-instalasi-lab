@@ -41,35 +41,87 @@
             <td>-</td>
             <td>
                 {
-                    "status": true,
-                    "message": "Data berhasil diambil",
-                    "data": {
-                        "no_instalasi": 1,
-                        "id_mahasiswa": 1,
-                        "nama_mahasiswa": "Widya Serena Mulyaputeri",
-                        "id_software": 5,
-                        "nama_software": "Virtual Box",
-                        "created_at": "2026-11-01 02:45:29",
-                        "status": "Selesai"
-                    }
+                "status": true,
+                "message": "Data berhasil diambil",
+                "data": {
+                    "no_instalasi": 1,
+                    "id_mahasiswa": 1,
+                    "nama_mahasiswa": "Widya Serena Mulyaputeri",
+                    "id_software": 5,
+                    "nama_software": "Virtual Box",
+                    "created_at": "2026-11-01 02:45:29",
+                    "status": "Selesai"
+                }
                 }
             </td>
         </tr>
         <tr>
             <td>GET</td>
             <td>
-                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=widya
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=jef
             </td>
             <td>-</td>
-            <td>JSON berisi hasil pencarian data instalasi</td>
+            <td>
+                {
+                "status": true,
+                "message": "Data berhasil diambil",
+                "data": [
+                    {
+                    "no_instalasi": 3,
+                    "id_mahasiswa": 3,
+                    "nama_mahasiswa": "Jeffrey Deryata",
+                    "id_software": 2,
+                    "nama_software": "Adobe Photoshop CS6",
+                    "created_at": "2026-11-01 02:46:20",
+                    "status": "Diproses"
+                    }
+                ]
+                }
+            </td>
         </tr>
         <tr>
             <td>GET</td>
             <td>
-                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&amp;limit=5
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&amp;limit=3
             </td>
             <td>-</td>
-            <td>JSON berisi data sesuai halaman dan batas data</td>
+            <td>
+            <pre>
+                {
+                "status": true,
+                "message": "Data berhasil diambil",
+                "data": [
+                    {
+                    "no_instalasi": "6",
+                    "id_mahasiswa": "5",
+                    "nama_mahasiswa": "Ahza Seprian Pratama",
+                    "id_software": "5",
+                    "nama_software": "Virtual Box",
+                    "created_at": "2026-11-01 10:24:31",
+                    "status": "diproses"
+                    },
+                    {
+                    "no_instalasi": "5",
+                    "id_mahasiswa": "5",
+                    "nama_mahasiswa": "Ahza Seprian Pratama",
+                    "id_software": "3",
+                    "nama_software": "Microsoft Office",
+                    "created_at": "2026-11-01 02:46:57",
+                    "status": "Belum diproses"
+                    },
+                    {
+                    "no_instalasi": "4",
+                    "id_mahasiswa": "4",
+                    "nama_mahasiswa": "Aditya Ihsani Wijaya",
+                    "id_software": "4",
+                    "nama_software": "Visual Studio Code",
+                    "created_at": "2026-11-01 02:46:20",
+                    "status": "Diproses"
+                    }
+                ]
+                }
+                </pre>
+            </td>
         </tr>
         <tr>
             <td>POST</td>
@@ -77,13 +129,23 @@
                 http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
             </td>
             <td>
-                <pre>{
-  "id_mahasiswa": 1,
-  "id_software": 2,
-  "status": "Menunggu"
-}</pre>
+                <pre>
+                    {
+                    "id_mahasiswa": 1,
+                    "id_software": 1,
+                    "status": "Belum diproses"
+                    }
+                </pre>
             </td>
-            <td>JSON berisi pesan berhasil dan no_instalasi baru</td>
+            <td>
+                {
+                "status": true,
+                "message": "Data telah berhasil tersimpan",
+                "data": {
+                    "no_instalasi": 7
+                }
+                }
+            </td>
         </tr>
         <tr>
             <td>PUT</td>
