@@ -9,4 +9,4 @@
 
 
 ### ERD
-<img src="database/erd_uts.png" alt="ERD" width="800">
+<img src="screenshot/erd_uts.png" alt="ERD" width="800">
