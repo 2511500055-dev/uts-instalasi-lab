@@ -5,8 +5,8 @@
 ### Kelompok 505http
 <p>Jeffrey Deryata [2511500007]<br>
 <ul>
-    <li></li>
-    <li></li>
+    <li>Membuat Metode Put, Delete untuk instalasi.php dan software.php</li>
+    <li>Memperbaiki Metode Get pada instalasi.php</li>
 </ul>
 <br>
 </p>
