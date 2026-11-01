@@ -14,6 +14,7 @@ $baseSelect = "SELECT d.kd, m.nim, m.nama AS nama_mahasiswa,
                       d.created_at, d.status
                FROM detail_instalasi d
                JOIN mahasiswa m ON d.id_mhs = m.id
+
                JOIN software s ON d.id_sfw = s.id";
 
 switch ($method) {
