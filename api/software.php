@@ -48,32 +48,6 @@ switch ($method) {
             sendResponse(true, "Data berhasil diambil", $data, 200);
         }
 
-        case 'POST':
-            
-
-        $input = json_decode(file_get_contents("php://input"), true);
-
-        if (!$input || !isset($input['kd_software']) || !isset($input['nama_software'])) {
-            sendResponse(false, "Data tidak lengkap", null, 400);
-        }
-
-        $kd_software = (string) $input['kd_software'];
-        $nama = (string) $input['nama_software'];
-
- 
-        $stmt = mysqli_prepare($koneksi, "INSERT INTO software (kd_software, nama_software) VALUES (?,?)");
-        mysqli_stmt_bind_param($stmt, "ss", $kd_software, $nama);
-
-        if (mysqli_stmt_execute($stmt)) {
-            sendResponse(true, "Data telah berhasil tersimpan", ["id_software" => mysqli_insert_id($koneksi)], 201);
-        } else 
-        {
-            sendResponse(false, "Gagal menyimpan data: " . mysqli_error($koneksi), null, 500);
-        }
-
-        echo "ini adalah metode POST";
-        break;
-
         //SEARCH
         if (isset($_GET['search'])) {
 
@@ -166,5 +140,85 @@ switch ($method) {
         }
 
         break;
+
+      case 'POST':
+            
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (!$input || !isset($input['kd_software']) || !isset($input['nama_software'])) {
+            sendResponse(false, "Data tidak lengkap", null, 400);
+        }
+
+        $kd_software = (string) $input['kd_software'];
+        $nama = (string) $input['nama_software'];
+
+ 
+        $stmt = mysqli_prepare($koneksi, "INSERT INTO software (kd_software, nama_software) VALUES (?,?)");
+        mysqli_stmt_bind_param($stmt, "ss", $kd_software, $nama);
+
+        if (mysqli_stmt_execute($stmt)) {
+            sendResponse(true, "Data telah berhasil tersimpan", ["id_software" => mysqli_insert_id($koneksi)], 201);
+        } else 
+        {
+            sendResponse(false, "Gagal menyimpan data: " . mysqli_error($koneksi), null, 500);
+        }
+
+        echo "ini adalah metode POST";
+        break;
+
+     case 'PUT':
+
+        $input = json_decode(file_get_contents("php://input"), true);
+        #cek apakah nim, nama, dan id_jurusan ada di dalam body yang dikirim
+         if (!$input || !isset($input['kd_software']) || !isset($input['nama_software'])) {
+            sendResponse(false, "Data tidak lengkap", null, 400);
+        }
+
+        $id =(int) ($_GET['id'] ?? 0);
+
+        $kd_software = (string) $input['kd_software'];
+        $nama = (string) $input['nama_software'];
+
+       
+    $cek_id = mysqli_query($koneksi, "SELECT id_software FROM software WHERE id_software = '$id' ");
+    if (mysqli_num_rows($cek_id) == 0) {
+        sendResponse(false, "ID Software tidak ditemukan", null, 404);
+    }
+
+        #Update
+        $query = "UPDATE software SET kd_software = '$kd_software', nama_software = '$nama' WHERE id_software = '$id'";
+
+        if (mysqli_query($koneksi, $query)) {
+            sendResponse(true, "Data Berhasil Diperbarui", ["id_software" => $id], 200);
+        } else {
+            sendResponse(false, mysqli_error($koneksi), null, 500);
+        }
+
+        break;
+
+
+    case 'DELETE':
+
+        $id = $_GET['id'];
+
+        $cek_form = mysqli_query($koneksi, "SELECT id_software FROM software WHERE id_software = '$id' ");
+        if (mysqli_num_rows($cek_form) == 0)
+            sendResponse(false, "Form Instalasi tidak ditemukan", null, 404);
+
+        $query = "DELETE FROM software WHERE id_software = '$id'";
+
+        if (mysqli_query($koneksi, $query)) {
+            sendResponse(true, "Data Berhasil Dihapus", ["id_software" => $id], 200);
+        } else {
+            sendResponse(false, mysqli_error($koneksi), null, 500);
+        }
+        break;
+
+    default:
+        sendResponse(false, "Metode tidak diizinkan", null, 405);
+        break;
+}
+
 
 }
