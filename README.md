@@ -10,3 +10,27 @@
 
 ### ERD
 <img src="screenshot/erd_uts.png" alt="ERD" width="800">
+
+
+
+### Daftar Endpoint
+GET All (Menampilkan seluruh data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php
+
+GET By no_instalasi (Menampilkan data berdasarkan no_instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
+
+GET Search (mencari data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?search=widya
+
+GET Page & Limit (Pagination data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?page=1&limit=5
+
+POST (Menambahkan data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php
+
+PUT (Memperbarui data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
+
+DELETE (Menghapus data instalasi)
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
