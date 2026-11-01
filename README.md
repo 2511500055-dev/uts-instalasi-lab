@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>GET All</td>
+            <td>GET</td>
             <td>
                 http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
             </td>
@@ -34,15 +34,29 @@
             <td>JSON berisi seluruh data instalasi</td>
         </tr>
         <tr>
-            <td>GET By no_instalasi</td>
+            <td>GET</td>
             <td>
                 http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
             </td>
             <td>-</td>
-            <td>JSON berisi data berdasarkan nomor instalasi</td>
+            <td>
+                {
+                    "status": true,
+                    "message": "Data berhasil diambil",
+                    "data": {
+                        "no_instalasi": 1,
+                        "id_mahasiswa": 1,
+                        "nama_mahasiswa": "Widya Serena Mulyaputeri",
+                        "id_software": 5,
+                        "nama_software": "Virtual Box",
+                        "created_at": "2026-11-01 02:45:29",
+                        "status": "Selesai"
+                    }
+                }
+            </td>
         </tr>
         <tr>
-            <td>GET Search</td>
+            <td>GET</td>
             <td>
                 http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=widya
             </td>
@@ -50,7 +64,7 @@
             <td>JSON berisi hasil pencarian data instalasi</td>
         </tr>
         <tr>
-            <td>GET Page &amp; Limit</td>
+            <td>GET</td>
             <td>
                 http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&amp;limit=5
             </td>
