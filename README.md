@@ -15,7 +15,7 @@
 
 ### Daftar Endpoint
 GET All (Menampilkan seluruh data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php <br>
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php
 
 GET By no_instalasi (Menampilkan data berdasarkan no_instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
