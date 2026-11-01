@@ -40,19 +40,21 @@
             </td>
             <td>-</td>
             <td>
-                {
-                "status": true,
-                "message": "Data berhasil diambil",
-                "data": {
-                    "no_instalasi": 1,
-                    "id_mahasiswa": 1,
-                    "nama_mahasiswa": "Widya Serena Mulyaputeri",
-                    "id_software": 5,
-                    "nama_software": "Virtual Box",
-                    "created_at": "2026-11-01 02:45:29",
-                    "status": "Selesai"
-                }
-                }
+                <pre>
+{
+"status": true,
+"message": "Data berhasil diambil",
+"data": {
+    "no_instalasi": 1,
+    "id_mahasiswa": 1,
+    "nama_mahasiswa": "Widya Serena Mulyaputeri",
+    "id_software": 5,
+    "nama_software": "Virtual Box",
+    "created_at": "2026-11-01 02:45:29",
+    "status": "Selesai"
+}
+}
+                </pre>
             </td>
         </tr>
         <tr>
@@ -62,21 +64,23 @@
             </td>
             <td>-</td>
             <td>
-                {
-                "status": true,
-                "message": "Data berhasil diambil",
-                "data": [
-                    {
-                    "no_instalasi": 3,
-                    "id_mahasiswa": 3,
-                    "nama_mahasiswa": "Jeffrey Deryata",
-                    "id_software": 2,
-                    "nama_software": "Adobe Photoshop CS6",
-                    "created_at": "2026-11-01 02:46:20",
-                    "status": "Diproses"
-                    }
-                ]
-                }
+                <pre>
+{
+"status": true,
+"message": "Data berhasil diambil",
+"data": [
+    {
+    "no_instalasi": 3,
+    "id_mahasiswa": 3,
+    "nama_mahasiswa": "Jeffrey Deryata",
+    "id_software": 2,
+    "nama_software": "Adobe Photoshop CS6",
+    "created_at": "2026-11-01 02:46:20",
+    "status": "Diproses"
+    }
+]
+}
+                </pre>
             </td>
         </tr>
         <tr>
@@ -86,7 +90,7 @@
             </td>
             <td>-</td>
             <td>
-            <pre>
+                <pre>
 {
 "status": true,
 "message": "Data berhasil diambil",
@@ -138,36 +142,60 @@
                 </pre>
             </td>
             <td>
-                {
-                "status": true,
-                "message": "Data telah berhasil tersimpan",
-                "data": {
-                    "no_instalasi": 7
-                }
-                }
+                <pre>
+{
+"status": true,
+"message": "Data telah berhasil tersimpan",
+"data": {
+    "no_instalasi": 7
+}
+}
+                </pre>
             </td>
         </tr>
         <tr>
             <td>PUT</td>
             <td>
-                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=7
             </td>
             <td>
-                <pre>{
+                <pre>
+{
   "id_mahasiswa": 1,
-  "id_software": 2,
-  "status": "Selesai"
-}</pre>
+  "id_software": 1,
+  "status": "Diproses"
+}
+                </pre>
             </td>
-            <td>JSON berisi pesan data berhasil diperbarui</td>
+            <td>
+                <pre>
+{
+  "status": true,
+  "message": "Data Berhasil Diperbarui",
+  "data": {
+    "no_instalasi": "7"
+  }
+}
+                </pre>
+            </td>
         </tr>
         <tr>
             <td>DELETE</td>
             <td>
-                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=7
             </td>
             <td>-</td>
-            <td>JSON berisi pesan data berhasil dihapus</td>
+            <td>
+                <pre>
+{
+  "status": true,
+  "message": "Data Berhasil Dihapus",
+  "data": {
+    "no_instalasi": "7"
+  }
+}
+                </pre>
+            </td>
         </tr>
     </tbody>
 </table>
