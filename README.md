@@ -10,7 +10,12 @@ Nananana<br>
 
 <p>Widya Serena Mulyaputeri [2511500020]<br>
 Tugas:<br>
-Nananana<br>
+<ul>
+    <li>Buat database (scheme.sql)</li>
+    <li>Buat ERD</li>
+    <li>Menyusun Readme.md</li>
+</ul>
+<br>
 </p>
 
 <p>Monika Aldesia Plaron [2511500030]<br>
