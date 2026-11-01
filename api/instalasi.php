@@ -174,6 +174,34 @@ switch ($method) {
             );;
         }
 
+        $query = "SELECT
+                    f.no_instalasi,
+                    f.id_mahasiswa,
+                    m.nama_mahasiswa AS nama_mahasiswa,
+                    f.id_software,
+                    s.nama_software AS nama_software,
+                    f.created_at,
+                    f.status
+
+                FROM form_instalasi f
+
+                LEFT JOIN mahasiswa m
+                     ON f.id_mahasiswa = m.id_mahasiswa
+
+                LEFT JOIN software s
+                    ON f.id_software = s.id_software";
+        $result = mysqli_query($koneksi, $query);
+
+        
+        if(!$result) sendResponse(false, "Query gagal: " . mysqli_error($koneksi), null, 500);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+
+        sendResponse(true, "berhasil", $data, 200);
+        
         break;
 
     case 'POST':
