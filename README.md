@@ -14,23 +14,84 @@
 
 
 ### Daftar Endpoint
-GET All (Menampilkan seluruh data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
 
-GET By no_instalasi (Menampilkan data berdasarkan no_instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
-
-GET Search (mencari data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=widya
-
-GET Page & Limit (Pagination data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&limit=5
-
-POST (Menambahkan data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
-
-PUT (Memperbarui data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
-
-DELETE (Menghapus data instalasi) <br>
-http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>URL</th>
+            <th>Body</th>
+            <th>Response</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET All</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
+            </td>
+            <td>-</td>
+            <td>JSON berisi seluruh data instalasi</td>
+        </tr>
+        <tr>
+            <td>GET By no_instalasi</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+            </td>
+            <td>-</td>
+            <td>JSON berisi data berdasarkan nomor instalasi</td>
+        </tr>
+        <tr>
+            <td>GET Search</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=widya
+            </td>
+            <td>-</td>
+            <td>JSON berisi hasil pencarian data instalasi</td>
+        </tr>
+        <tr>
+            <td>GET Page &amp; Limit</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&amp;limit=5
+            </td>
+            <td>-</td>
+            <td>JSON berisi data sesuai halaman dan batas data</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php
+            </td>
+            <td>
+                <pre>{
+  "id_mahasiswa": 1,
+  "id_software": 2,
+  "status": "Menunggu"
+}</pre>
+            </td>
+            <td>JSON berisi pesan berhasil dan no_instalasi baru</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+            </td>
+            <td>
+                <pre>{
+  "id_mahasiswa": 1,
+  "id_software": 2,
+  "status": "Selesai"
+}</pre>
+            </td>
+            <td>JSON berisi pesan data berhasil diperbarui</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>
+                http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1
+            </td>
+            <td>-</td>
+            <td>JSON berisi pesan data berhasil dihapus</td>
+        </tr>
+    </tbody>
+</table>
