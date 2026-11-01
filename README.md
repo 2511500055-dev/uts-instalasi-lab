@@ -1,10 +1,27 @@
-# UTS/UAS Instalasi Lab
+# UTS/UAS PDCS
 
-### 505http
-<p>Jeffrey Deryata [2511500007]</p>
-<p>Widya Serena Mulyaputeri [2511500020]</p>
-<p>Monika Aldesia Plaron [2511500030]</p>
-<p>Aditya Isani Wijaya [2511500055]</p>
+### Tema: Instalasi Lab
+
+### Kelompok 505http
+<p>Jeffrey Deryata [2511500007]</p><br>
+<p>Tugas:</p><br>
+Nananana
+<br><br>
+
+<p>Widya Serena Mulyaputeri [2511500020]</p><br>
+<p>Tugas:</p><br>
+Nananana
+<br><br>
+
+<p>Monika Aldesia Plaron [2511500030]</p><br>
+<p>Tugas:</p><br>
+Nananana
+<br><br>
+
+<p>Aditya Isani Wijaya [2511500055]</p><br>
+<p>Tugas:</p><br>
+Nananana
+<br><br>
 
 
 
