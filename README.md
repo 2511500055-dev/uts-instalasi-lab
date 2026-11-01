@@ -267,7 +267,7 @@ Tugas:<br>
     <li>Pilih metode HTTP sesuai endpoint yang akan diuji (GET, POST, PUT, atau DELETE)</li>
     <li>Masukkan URL endpoint yang ingin diuji (contohnya dapat dilihat pada tabel daftar endpoint)</li>
     <li>Untuk metode POST dan PUT, pilih Body dan pilih JSON</li>
-    <li>Masukkan data JSON sesuai kebutuhan(contohnya dapat dilihat pada tabel daftar endpoint)</li>
+    <li>Masukkan data JSON sesuai kebutuhan (contohnya dapat dilihat pada tabel daftar endpoint)</li>
     <li>Klik Send untuk mengirim request</li>
     <li>Periksa hasil pengujian pada bagian Response</li>
 </ol>
