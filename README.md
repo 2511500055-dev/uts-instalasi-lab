@@ -14,23 +14,23 @@
 
 
 ### Daftar Endpoint
-GET All (Menampilkan seluruh data instalasi)
-http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php
+GET All (Menampilkan seluruh data instalasi) <br>
+http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php <br>
 
-GET By no_instalasi (Menampilkan data berdasarkan no_instalasi)
+GET By no_instalasi (Menampilkan data berdasarkan no_instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
 
-GET Search (mencari data instalasi)
+GET Search (mencari data instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?search=widya
 
-GET Page & Limit (Pagination data instalasi)
+GET Page & Limit (Pagination data instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?page=1&limit=5
 
-POST (Menambahkan data instalasi)
+POST (Menambahkan data instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php
 
-PUT (Memperbarui data instalasi)
+PUT (Memperbarui data instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
 
-DELETE (Menghapus data instalasi)
+DELETE (Menghapus data instalasi) <br>
 http://localhost/pdcs-uts/uts-instalasi-lab/api/form_instalasi.php?no_instalasi=1
