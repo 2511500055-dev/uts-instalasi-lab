@@ -4,8 +4,11 @@
 
 ### Kelompok 505http
 <p>Jeffrey Deryata [2511500007]<br>
-Tugas:<br>
-Nananana<br>
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+<br>
 </p>
 
 <p>Widya Serena Mulyaputeri [2511500020]<br>
@@ -20,12 +23,20 @@ Tugas:<br>
 
 <p>Monika Aldesia Plaron [2511500030]<br>
 Tugas:<br>
-Nananana<br>
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+<br>
 </p>
 
 <p>Aditya Isani Wijaya [2511500055]<br>
 Tugas:<br>
-Nananana<br>
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+<br>
 </p>
 
 
