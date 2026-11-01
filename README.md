@@ -87,39 +87,39 @@
             <td>-</td>
             <td>
             <pre>
-                {
-                "status": true,
-                "message": "Data berhasil diambil",
-                "data": [
-                    {
-                    "no_instalasi": "6",
-                    "id_mahasiswa": "5",
-                    "nama_mahasiswa": "Ahza Seprian Pratama",
-                    "id_software": "5",
-                    "nama_software": "Virtual Box",
-                    "created_at": "2026-11-01 10:24:31",
-                    "status": "diproses"
-                    },
-                    {
-                    "no_instalasi": "5",
-                    "id_mahasiswa": "5",
-                    "nama_mahasiswa": "Ahza Seprian Pratama",
-                    "id_software": "3",
-                    "nama_software": "Microsoft Office",
-                    "created_at": "2026-11-01 02:46:57",
-                    "status": "Belum diproses"
-                    },
-                    {
-                    "no_instalasi": "4",
-                    "id_mahasiswa": "4",
-                    "nama_mahasiswa": "Aditya Ihsani Wijaya",
-                    "id_software": "4",
-                    "nama_software": "Visual Studio Code",
-                    "created_at": "2026-11-01 02:46:20",
-                    "status": "Diproses"
-                    }
-                ]
-                }
+{
+"status": true,
+"message": "Data berhasil diambil",
+"data": [
+    {
+    "no_instalasi": "6",
+    "id_mahasiswa": "5",
+    "nama_mahasiswa": "Ahza Seprian Pratama",
+    "id_software": "5",
+    "nama_software": "Virtual Box",
+    "created_at": "2026-11-01 10:24:31",
+    "status": "diproses"
+    },
+    {
+    "no_instalasi": "5",
+    "id_mahasiswa": "5",
+    "nama_mahasiswa": "Ahza Seprian Pratama",
+    "id_software": "3",
+    "nama_software": "Microsoft Office",
+    "created_at": "2026-11-01 02:46:57",
+    "status": "Belum diproses"
+    },
+    {
+    "no_instalasi": "4",
+    "id_mahasiswa": "4",
+    "nama_mahasiswa": "Aditya Ihsani Wijaya",
+    "id_software": "4",
+    "nama_software": "Visual Studio Code",
+    "created_at": "2026-11-01 02:46:20",
+    "status": "Diproses"
+    }
+]
+}
                 </pre>
             </td>
         </tr>
@@ -130,11 +130,11 @@
             </td>
             <td>
                 <pre>
-                    {
-                    "id_mahasiswa": 1,
-                    "id_software": 1,
-                    "status": "Belum diproses"
-                    }
+{
+"id_mahasiswa": 1,
+"id_software": 1,
+"status": "Belum diproses"
+}
                 </pre>
             </td>
             <td>
