@@ -139,6 +139,24 @@ switch ($method) {
             );;
         }
 
+        // GET all
+        $stmt = mysqli_prepare($koneksi, "SELECT * FROM software ORDER BY id_software DESC");
+
+        mysqli_stmt_execute($stmt);
+        $r = mysqli_stmt_get_result($stmt);
+
+        if (!$r) {
+            sendResponse(false, "Gagal mengambil data software", null, 500);
+        }
+
+        $data = [];
+
+        while ($row = mysqli_fetch_assoc($r)) {
+            $data[] = $row;
+        }
+
+        sendResponse(true, "Berhasil", $data, 200);
+
         break;
 
       case 'POST':
