@@ -82,7 +82,7 @@ Tugas:<br>
   <tr>
     <td>mahasiswa.php</td>
     <td>GET</td>
-    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?page=1&amp;limit=2</td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?page=1&limit=2</td>
     <td>-</td>
     <td>{"status":true,"message":"Berhasil","data":[{"id_mahasiswa":5,"nim":"2322500077","nama_mahasiswa":"Ahza Seprian Pratama","prodi":"Sistem Informasi"},{"id_mahasiswa":4,"nim":"2511500055","nama_mahasiswa":"Aditya Ihsani Wijaya","prodi":"Teknik Informatika"}]}</td>
   </tr>
@@ -271,7 +271,7 @@ Tugas:<br>
   <tr>
     <td>instalasi.php</td>
     <td>GET</td>
-    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&amp;limit=3</td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&limit=3</td>
     <td>-</td>
     <td>{"status":true,"message":"Data berhasil diambil","data":[{"no_instalasi":"6","id_mahasiswa":"5","nama_mahasiswa":"Ahza Seprian Pratama","id_software":"5","nama_software":"Virtual Box","created_at":"2026-11-01 10:24:31","status":"diproses"},{"no_instalasi":"5","id_mahasiswa":"5","nama_mahasiswa":"Ahza Seprian Pratama","id_software":"3","nama_software":"Microsoft Office","created_at":"2026-11-01 02:46:57","status":"Belum diproses"},{"no_instalasi":"4","id_mahasiswa":"4","nama_mahasiswa":"Aditya Ihsani Wijaya","id_software":"4","nama_software":"Visual Studio Code","created_at":"2026-11-01 02:46:20","status":"Diproses"}]}</td>
   </tr>
