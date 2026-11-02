@@ -114,49 +114,136 @@ Tugas:<br>
     <td>GET</td>
     <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php</td>
     <td>-</td>
-    <td></td>
+    <td>{
+  "status": true,
+  "message": "Berhasil",
+  "data": [
+    {
+      "id_software": 5,
+      "kd_software": "VB",
+      "nama_software": "Virtual Box"
+    },
+    {
+      "id_software": 4,
+      "kd_software": "VSC",
+      "nama_software": "Visual Studio Code"
+    },
+    {
+      "id_software": 3,
+      "kd_software": "MCSOFC",
+      "nama_software": "Microsoft Office"
+    },
+    {
+      "id_software": 2,
+      "kd_software": "ADPS6",
+      "nama_software": "Adobe Photoshop CS6"
+    },
+    {
+      "id_software": 1,
+      "kd_software": "LRG6",
+      "nama_software": "Laragon 6"
+    }
+  ]
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>GET</td>
-    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id_software=1</td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=1</td>
     <td>-</td>
-    <td></td>
+    <td>{
+  "status": true,
+  "message": "Data berhasil diambil",
+  "data": {
+    "id_software": 1,
+    "kd_software": "LRG6",
+    "nama_software": "Laragon 6"
+  }
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>GET</td>
-    <td></td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?search=laragon</td>
     <td>-</td>
-    <td></td>
+    <td>{
+  "status": true,
+  "message": "Data berhasil diambil",
+  "data": [
+    {
+      "id_software": 1,
+      "kd_software": "LRG6",
+      "nama_software": "Laragon 6"
+    }
+  ]
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>GET</td>
-    <td></td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?page=1&limit=2</td>
     <td>-</td>
-    <td></td>
+    <td>{
+  "status": true,
+  "message": "Data berhasil diambil",
+  "data": [
+    {
+      "id_software": "5",
+      "kd_software": "VB",
+      "nama_software": "Virtual Box"
+    },
+    {
+      "id_software": "4",
+      "kd_software": "VSC",
+      "nama_software": "Visual Studio Code"
+    }
+  ]
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>POST</td>
     <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php</td>
-    <td></td>
-    <td></td>
+    <td>{
+  "kd_software": "AI21",
+  "nama_software": "Adobe Illustrator 2021"
+}</td>
+    <td>{
+  "status": true,
+  "message": "Data telah berhasil tersimpan",
+  "data": {
+    "id_software": 6
+  }
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>PUT</td>
-    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id_software=1</td>
-    <td></td>
-    <td></td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=6</td>
+    <td>{
+  "kd_software": "AI2021",
+  "nama_software": "Adobe Illustrator 2021"
+}</td>
+    <td>{
+  "status": true,
+  "message": "Data Berhasil Diperbarui",
+  "data": {
+    "id_software": 6
+  }
+}</td>
   </tr>
   <tr>
     <td>software.php</td>
     <td>DELETE</td>
-    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id_software=1</td>
+    <td>http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=6</td>
     <td>-</td>
-    <td></td>
+    <td>{
+  "status": true,
+  "message": "Data Berhasil Dihapus",
+  "data": {
+    "id_software": "6"
+  }
+}</td>
   </tr>
 
   <!-- INSTALASI -->
