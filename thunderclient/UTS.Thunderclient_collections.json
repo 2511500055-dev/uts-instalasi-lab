@@ -1,0 +1,425 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "UTS.Thunderclient_collections",
+    "collectionId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+    "dateExported": "2026-11-02T04:30:30.152Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "11430747-940e-4369-b6e2-a0cdd72112f2",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-get-all",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-11-02T04:12:23.544Z",
+            "modified": "2026-11-02T04:12:23.544Z",
+            "headers": []
+        },
+        {
+            "_id": "23ef3484-7cdf-4d93-be0b-6ced2f9bf827",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-get-id",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?id_mahasiswa=5",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2026-11-02T04:13:00.509Z",
+            "modified": "2026-11-02T04:13:00.509Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id_mahasiswa",
+                    "value": "5",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "337cfc31-2c22-4d49-9910-deea4e6c34a2",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-get-search",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?search=mon",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2026-11-02T04:15:02.363Z",
+            "modified": "2026-11-02T04:15:02.363Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "search",
+                    "value": "mon",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "cd02b896-7ecf-407e-aa59-809a413199d0",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-pagination",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?page=1&limit=2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2026-11-02T04:16:29.997Z",
+            "modified": "2026-11-02T04:16:29.997Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "page",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "2",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "50174db9-82a0-4f2b-972a-dd2461928302",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-post",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2026-11-02T04:16:53.761Z",
+            "modified": "2026-11-02T04:16:53.761Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{\"nim\":\"2677500078\",\"nama_mahasiswa\":\"Nelsia Fadia Mulyaputeri\",\"prodi\":\"Bisnis Digital\"}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "83f22303-40df-4103-9c94-e41a0426fe76",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-put",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?id_mahasiswa=11",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2026-11-02T04:18:25.483Z",
+            "modified": "2026-11-02T04:18:25.483Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id_mahasiswa",
+                    "value": "11",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{\"nim\":\"2677500078\",\"nama_mahasiswa\":\"Nelsia\",\"prodi\":\"Bisnis Digital\"}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "aab8c5ef-4645-48e0-813d-5599ea48bb14",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "mahasiswa-delete",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/mahasiswa.php?id_mahasiswa=11",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2026-11-02T04:20:01.698Z",
+            "modified": "2026-11-02T04:20:01.698Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id_mahasiswa",
+                    "value": "11",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "8078d06f-212e-4905-b341-08510c0e8f86",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-get-all",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2026-11-02T04:20:46.014Z",
+            "modified": "2026-11-02T04:20:46.014Z",
+            "headers": []
+        },
+        {
+            "_id": "d01ce578-9276-4166-ac76-d37672b63da1",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-get-id",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=1",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2026-11-02T04:22:32.276Z",
+            "modified": "2026-11-02T04:22:32.276Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "aff20df9-ec64-4ee7-8f42-2803c2c90ff3",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-get-search",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?search=laragon",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2026-11-02T04:22:46.949Z",
+            "modified": "2026-11-02T04:22:46.949Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "search",
+                    "value": "laragon",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "97022f98-1707-4c61-bb0c-eced7348bf31",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-pagination",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?page=1&limit=2",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2026-11-02T04:23:05.592Z",
+            "modified": "2026-11-02T04:23:05.593Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "page",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "2",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "b467fc1c-deba-4e3d-b09e-decf6894edc2",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-post",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2026-11-02T04:23:18.730Z",
+            "modified": "2026-11-02T04:23:18.730Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{ \"kd_software\": \"AI21\", \"nama_software\": \"Adobe Illustrator 2021\" }"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "b5cbef3d-7e86-4f9e-abac-1586b2725e4e",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-put",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=8",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2026-11-02T04:23:29.155Z",
+            "modified": "2026-11-02T04:23:29.155Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "8",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{ \"kd_software\": \"AI2021\", \"nama_software\": \"Adobe Illustrator 2021\" }"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "a3268645-a94e-4417-8325-f714e2ad7313",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "software-delete",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/software.php?id=8",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2026-11-02T04:23:43.867Z",
+            "modified": "2026-11-02T04:23:43.867Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "8",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "b8227ba2-0713-449e-bc12-42ee1ff02a4f",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-get-all",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2026-11-02T04:26:49.626Z",
+            "modified": "2026-11-02T04:26:49.626Z",
+            "headers": []
+        },
+        {
+            "_id": "67a3f921-1a58-43fa-bea7-bee877da6a52",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-get-id",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=1",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2026-11-02T04:26:59.726Z",
+            "modified": "2026-11-02T04:26:59.726Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "no_instalasi",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "41ca716f-04f3-4ef7-a48a-8a4b67c7ffb7",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-get-search",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?search=jef",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2026-11-02T04:27:11.684Z",
+            "modified": "2026-11-02T04:27:11.684Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "search",
+                    "value": "jef",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "328aad60-366f-449a-b9d4-fa0961578bf0",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-pagination",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?page=1&limit=3",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2026-11-02T04:27:24.044Z",
+            "modified": "2026-11-02T04:27:24.044Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "page",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "3",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "44a3a371-0913-41ad-9f06-18b8d99c2e32",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-post",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php",
+            "method": "POST",
+            "sortNum": 190000,
+            "created": "2026-11-02T04:27:35.587Z",
+            "modified": "2026-11-02T04:27:35.587Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{\"id_mahasiswa\":1,\"id_software\":1,\"status\":\"Belum diproses\"}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "58be577d-834a-4e80-baf3-f8ab5d1db45f",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-put",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=8",
+            "method": "PUT",
+            "sortNum": 200000,
+            "created": "2026-11-02T04:27:49.016Z",
+            "modified": "2026-11-02T04:27:49.016Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "no_instalasi",
+                    "value": "8",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{\"id_mahasiswa\":1,\"id_software\":1,\"status\":\"Diproses\"}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "dce8aa1f-23ab-4266-add6-2d6f4aef12e5",
+            "colId": "02130ff9-dc7b-4f5f-b737-556ea4ffc8c9",
+            "containerId": "",
+            "name": "instalasi-delete",
+            "url": "http://localhost/pdcs-uts/uts-instalasi-lab/api/instalasi.php?no_instalasi=8",
+            "method": "DELETE",
+            "sortNum": 210000,
+            "created": "2026-11-02T04:28:01.067Z",
+            "modified": "2026-11-02T04:28:01.067Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "no_instalasi",
+                    "value": "8",
+                    "isPath": false
+                }
+            ]
+        }
+    ],
+    "ref": "JBiygCP_bjvahkkNmG9CxN2qRAo3dnDnRp8l17O2jXRi2D_rdijg8kicYSm3zUazhRmm5V9bzH-ti2-Mul6qLg"
+}
