@@ -5,8 +5,10 @@
 ### Kelompok 505http
 <p>Jeffrey Deryata [2511500007]<br>
 <ul>
-    <li></li>
-    <li></li>
+    <li>Membuat Metode Put, Delete untuk instalasi.php dan software.php
+    </li>
+    <li>Memperbaiki Metode Get pada instalasi.php</li>
+    <li>Membuat file instalasi.php</li
 </ul>
 <br>
 </p>
@@ -17,6 +19,8 @@ Tugas:<br>
     <li>Buat database (scheme.sql)</li>
     <li>Buat ERD</li>
     <li>Menyusun Readme.md</li>
+    <li>Menyusun Dokumentasi/ Screenshot</li>
+    <li>Membuat file mahasiswa.php</li>
 </ul>
 <br>
 </p>
@@ -24,8 +28,8 @@ Tugas:<br>
 <p>Monika Aldesia Plaron [2511500030]<br>
 Tugas:<br>
 <ul>
-    <li></li>
-    <li></li>
+    <li>Menambahkan metode POST di instalasi.php</li>
+    <li>Menambahkan metode POST di software.php</li>
 </ul>
 <br>
 </p>
