@@ -188,7 +188,7 @@ switch ($method) {
      case 'PUT':
 
         $input = json_decode(file_get_contents("php://input"), true);
-        #cek apakah nim, nama, dan id_jurusan ada di dalam body yang dikirim
+        
          if (!$input || !isset($input['kd_software']) || !isset($input['nama_software'])) {
             sendResponse(false, "Data tidak lengkap", null, 400);
         }
