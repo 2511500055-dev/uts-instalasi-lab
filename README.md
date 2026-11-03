@@ -24,7 +24,7 @@ Tugas:<br>
 <p>Monika Aldesia Plaron [2511500030]<br>
 Tugas:<br>
 <ul>
-    <li></li>
+    <li>Menambahkan POST di instalasi.php</li>
     <li></li>
 </ul>
 <br>
