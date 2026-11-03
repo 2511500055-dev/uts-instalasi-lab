@@ -18,6 +18,7 @@ Tugas:<br>
     <li>Buat database (scheme.sql)</li>
     <li>Buat ERD</li>
     <li>Menyusun Readme.md</li>
+    <li>Membuat Mahasiswa.php</li>
 </ul>
 <br>
 </p>
