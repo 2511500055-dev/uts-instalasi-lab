@@ -29,7 +29,7 @@ Tugas:<br>
 Tugas:<br>
 <ul>
     <li>Menambahkan metode POST di instalasi.php</li>
-    <li></li>
+    <li>Menambahkan metode POST di software.php</li>
 </ul>
 <br>
 </p>
