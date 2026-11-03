@@ -25,7 +25,7 @@ Tugas:<br>
 Tugas:<br>
 <ul>
     <li>Menambahkan POST di instalasi.php</li>
-    <li></li>
+    <li>Menambahkan POST di software.php</li>
 </ul>
 <br>
 </p>
