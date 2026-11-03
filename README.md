@@ -19,6 +19,7 @@ Tugas:<br>
     <li>Buat ERD</li>
     <li>Menyusun Readme.md</li>
     <li>Membuat Mahasiswa.php</li>
+    <li>Membuat Dokumentasi/Screenshot</li>
 </ul>
 <br>
 </p>
