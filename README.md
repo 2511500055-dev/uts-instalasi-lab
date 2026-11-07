@@ -38,7 +38,7 @@ Tugas:<br>
 Tugas:<br>
 <ul>
     <li>Membuat file config (koneksi database) dan helper (format response JSON)</li>
-    <li>Membuat metode GET di software.php (semua data, berdasarkan id, search, pagination, dan JOIN</li>
+    <li>Membuat metode GET di software.php (semua data, berdasarkan id, search, pagination, dan JOIN)</li>
 </ul>
 <br>
 </p>
