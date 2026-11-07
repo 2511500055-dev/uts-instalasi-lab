@@ -34,7 +34,7 @@ Tugas:<br>
 <br>
 </p>
 
-<p>Aditya Isani Wijaya [2511500055]<br>
+<p>Aditya Ihsani Wijaya [2511500055]<br>
 Tugas:<br>
 <ul>
     <li>Membuat file config (koneksi database) dan helper (format response JSON)</li>
